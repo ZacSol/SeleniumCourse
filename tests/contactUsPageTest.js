@@ -6,36 +6,6 @@ beforeEach(function () {
 
 describe('Test Contact Us form WebdriverUni', function () {
 
-  function setFirstName(firstName){
-    return ContactUs_Page.firstName.setValue(firstName);
-  }
-  function setLastName(lastName){
-    return ContactUs_Page.lastName.setValue(lastName);
-  }
-  function setEmailAddress(email){
-    return ContactUs_Page.emailAddress.setValue(email);
-  }
-  function setComments(comments){
-    return ContactUs_Page.comments.setValue(comments);
-  }
-  function clickSubmit(){
-    return ContactUs_Page.submitButton.click();
-  }
-  function confirmSuccess(){
-    var validateHeader = browser.waitUntil(function(){
-      return ContactUs_Page.successMessage.getText() == 'Thank You for your Message!';
-    },3000)
-    expect(validateHeader,"Success message does not exist.").to.be.true;
-  }
-  function confirmFail(){
-    var validateFail = browser.waitUntil(function(){
-      return ContactUs_Page.failMessage.getText();
-      // this part would only be used to search for an exact value in the error message. causes test to fail if the email field does not have proper email format due to extra error message "Error: Invalid email address"
-      // == 'Error: all fields are required';
-    },3000)
-    expect(ContactUs_Page.failMessage.getText()).to.include('Error: all fields are required');
-  }
-
     it('Should be able to submit a successful submission via contact us form', function (done) {
       // browser.submitDataContact('Joe','Blogs',detail.email,detail.body);
       // var successConfirmed = browser.isExisting(replyMsg, 'Success message is not present.');
@@ -44,20 +14,15 @@ describe('Test Contact Us form WebdriverUni', function () {
       //       var successText = browser.getText(replyMsg);
       //       expect(successText).to.equal('Thank You for your Message!');
 
-      setFirstName('Joe');
-      setLastName('Blogs');
-      setEmailAddress("email@test.com");
-      setComments('This is a message.');
-      clickSubmit();
-      confirmSuccess();
+      ContactUs_Page.submitAllInfo('Joe','Blogs','test@test.com','This is a comment.');
     });
 
   it('Should not be able to submit a successful  submission via contact us form as all fields are required', function (done) {
-    setFirstName('Joe');
-    setLastName('Blogs');
-    setEmailAddress("test@test.com");
-    clickSubmit();
-    confirmFail();
+    ContactUs_Page.setFirstName('Joe');
+    ContactUs_Page.setLastName('Blogs');
+    ContactUs_Page.setEmailAddress("test@test.com");
+    ContactUs_Page.clickSubmit();
+    ContactUs_Page.confirmFail();
   });
 
   // has not been updated with new selectors
