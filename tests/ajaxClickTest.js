@@ -2,7 +2,7 @@ describe("Test that the button is clickable once the ajax loader completes loadi
     // .skip will make sure that that text does not get executed
     it.skip('Attempt to click the button ASAP', function (done) {
         browser.url('/Ajax-Loader/index.html');
-        browser.click('#button1');
+        browser.click('#button1555');
     });
 
     // having .only will make sure that the only test executed will be that one
