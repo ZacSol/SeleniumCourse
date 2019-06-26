@@ -6,7 +6,7 @@ beforeEach(function () {
 
 describe('Test Contact Us form WebdriverUni', function () {
 
-    it('Should be able to submit a successful submission via contact us form', function (done) {
+    it('Test 1: Should be able to submit a successful submission via contact us form', function (done) {
       // browser.submitDataContact('Joe','Blogs',detail.email,detail.body);
       // var successConfirmed = browser.isExisting(replyMsg, 'Success message is not present.');
       //       expect(successConfirmed).to.be.true;
@@ -17,7 +17,7 @@ describe('Test Contact Us form WebdriverUni', function () {
       ContactUs_Page.submitAllInfo('Joe','Blogs','test@test.com','This is a comment.');
     });
 
-  it('Should not be able to submit a successful  submission via contact us form as all fields are required', function (done) {
+  it('Test 2: Should not be able to submit a successful  submission via contact us form as all fields are required', function (done) {
     ContactUs_Page.setFirstName('Joe');
     ContactUs_Page.setLastName('Blogs');
     ContactUs_Page.setEmailAddress("test@test.com");
@@ -26,7 +26,7 @@ describe('Test Contact Us form WebdriverUni', function () {
   });
 
   // has not been updated with new selectors
-  it.skip('Should not be able to submit a successful submission via contact us form as all fields are required', function (done) {
+  it.skip('Test 3: Should not be able to submit a successful submission via contact us form as all fields are required', function (done) {
     browser.setValue(fName, 'Joe');
     browser.setValue(mail, 'joe_blogs@mail.com');
     browser.click(submitBtn);
@@ -39,7 +39,7 @@ describe('Test Contact Us form WebdriverUni', function () {
   });
 
   // has not been updated with new selectors
-  it.skip('Should not be able to submit a successful submission via contact us form as all fields are required', function (done) {
+  it.skip('Test 4: Should not be able to submit a successful submission via contact us form as all fields are required', function (done) {
     browser.setValue(fName, 'Joe');
     browser.setValue(lName, 'Blogs');
     browser.setValue(myMessage, 'How much does product x cost?');
